@@ -161,7 +161,7 @@ Use any text-editor to update the content
 ### ```npm start```
 To start both server and client.
 
-Opens at localhost:1960
+Opens at localhost:1963
 
 ### ```npm run start:client```
 
