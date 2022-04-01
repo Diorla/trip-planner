@@ -1,0 +1,19 @@
+@import "./variables.scss";
+@import "./styles.scss";
+@import "./nav-m.scss";
+@import "./explore-m.scss";
+@import "./button-m.scss";
+@import "./trip-card-m.scss";
+
+.explore-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trip-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
