@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    index: "./src/client/index.js",
+    index: "./src/client/js/index.js",
     explore: "./src/client/js/explore.js",
   },
   mode: "development",

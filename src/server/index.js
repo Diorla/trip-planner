@@ -7,6 +7,8 @@ const port = 1963;
 const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
+const updateDB = require("./updateDB");
+const fetchDB = require("./fetchDB");
 
 app.use(express.json());
 
@@ -16,6 +18,16 @@ app.use(express.static("dist"));
 
 app.get("/", (_req, res) => {
   res.sendFile(path.resolve("dist/index.html"));
+});
+
+app.get("/data", (_req, res) => {
+  fetchDB((data) => res.json(data));
+});
+
+app.post("/update", (req, res) => {
+  updateDB(req.body, () => {
+    res.status(200).send("Request successful");
+  });
 });
 
 app.get("/explore", (_req, res) => {
