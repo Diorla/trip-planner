@@ -1,0 +1,15 @@
+button {
+  border: none;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  &.primary {
+    background: $primary-color;
+    color: white;
+    &:hover {
+      background: $primary-light-color;
+    }
+    &:active {
+      background: $primary-dark-color;
+    }
+  }
+}

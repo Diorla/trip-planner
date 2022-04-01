@@ -21,11 +21,11 @@ app.get("/", (_req, res) => {
 });
 
 app.get("/data", (_req, res) => {
-  fetchDB((data) => res.json(data));
+  fetchDB("temp", (data) => res.json(data));
 });
 
 app.post("/update", (req, res) => {
-  updateDB(req.body, () => {
+  updateDB("temp", req.body, () => {
     res.status(200).send("Request successful");
   });
 });

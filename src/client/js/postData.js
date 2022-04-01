@@ -4,6 +4,11 @@
  * @param {object} data the data that will be sent to the API endpoint
  * @param {object} data.url the website to be analysed
  * @returns Promise<any>
+ * @example postData("/update", {
+    name: "Katherine Janeway",
+    rank: "Captain",
+    station: "USS Voyager",
+  });
  */
 export default async function postData(url = "", data = {}) {
   try {
