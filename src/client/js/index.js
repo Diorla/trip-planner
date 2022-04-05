@@ -1,2 +1,5 @@
 import "../styles/index.scss";
-console.log("world");
+
+document.querySelector("button").addEventListener("click", () => {
+  location.assign("/explore");
+});

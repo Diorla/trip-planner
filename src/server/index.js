@@ -30,8 +30,9 @@ app.post("/update", (req, res) => {
   });
 });
 
-app.get("/explore", (_req, res) => {
-  res.sendFile(path.resolve("dist/explore.html"));
+app.get("*", (req, res) => {
+  const currentPath = req.path.replace("/", "");
+  res.sendFile(path.resolve(`dist/${currentPath}.html`));
 });
 
 app.listen(port, () => {

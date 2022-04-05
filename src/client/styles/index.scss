@@ -4,16 +4,10 @@
 @import "./profile-m.scss";
 @import "./button-m.scss";
 @import "./trip-card-m.scss";
+@import "./trip-wrapper-m.scss";
 
 .explore-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.trip-wrapper {
-  display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }

@@ -1,0 +1,49 @@
+.search-card {
+  background-image: url(https://loremflickr.com/480/480);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 21rem;
+  width: clamp(20rem, 80%, 48rem);
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 0.4rem black;
+  .card-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.4rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    flex: 1;
+    align-items: center;
+    font-size: 2.6rem;
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 1.6rem;
+    text-shadow: 0 0 0.2rem white;
+    font-weight: bolder;
+  }
+
+  .card-bottom {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: white;
+    height: 4rem;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-bottom a {
+    text-decoration: none;
+    color: $primary-color;
+    &:hover {
+      color: $primary-light-color;
+    }
+  }
+}

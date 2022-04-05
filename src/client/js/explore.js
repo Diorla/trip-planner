@@ -14,12 +14,12 @@ searchIcon.addEventListener("click", () => {
 
 searchInput.addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
-    console.log(searchInput.value);
+    if (searchInput.value) location.assign(`/search?q=${searchInput.value}`);
   }
 });
 
 searchButton.addEventListener("click", () => {
-  console.log(searchInput.value);
+  if (searchInput.value) location.assign(`/search?q=${searchInput.value}`);
 });
 
 searchInput.addEventListener("focus", () => {

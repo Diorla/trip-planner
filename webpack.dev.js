@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     index: "./src/client/js/index.js",
     explore: "./src/client/js/explore.js",
+    search: "./src/client/js/search.js",
   },
   mode: "development",
   devtool: "inline-source-map",
@@ -25,6 +26,11 @@ module.exports = {
       template: "./src/client/views/explore.html",
       filename: "./explore.html",
       chunks: ["explore"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/client/views/search.html",
+      filename: "./search.html",
+      chunks: ["search"],
     }),
     new CleanWebpackPlugin({
       dry: true,
