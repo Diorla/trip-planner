@@ -9,6 +9,9 @@ module.exports = {
     search: "./src/client/js/search.js",
     location: "./src/client/js/location.js",
     confirm: "./src/client/js/confirm.js",
+    history: "./src/client/js/history.js",
+    saved: "./src/client/js/saved.js",
+    upcoming: "./src/client/js/upcoming.js",
   },
   mode: "development",
   devtool: "inline-source-map",
@@ -43,6 +46,21 @@ module.exports = {
       template: "./src/client/views/confirm.html",
       filename: "./confirm.html",
       chunks: ["confirm"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/client/views/history.html",
+      filename: "./history.html",
+      chunks: ["history"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/client/views/saved.html",
+      filename: "./saved.html",
+      chunks: ["saved"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/client/views/upcoming.html",
+      filename: "./upcoming.html",
+      chunks: ["upcoming"],
     }),
     new CleanWebpackPlugin({
       dry: true,
