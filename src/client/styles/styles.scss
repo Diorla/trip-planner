@@ -30,3 +30,8 @@ ul {
 .hidden {
   display: none;
 }
+
+main {
+  width: clamp(20rem, 100%, 96rem);
+  margin: auto;
+}

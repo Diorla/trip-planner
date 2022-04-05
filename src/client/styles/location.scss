@@ -1,0 +1,58 @@
+@import "./variables.scss";
+@import "./styles.scss";
+@import "./nav-m.scss";
+@import "./button-m.scss";
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem;
+  align-items: center;
+  margin: auto;
+}
+
+.bookmark {
+  font-size: 1.6rem;
+  cursor: pointer;
+  &.active {
+    color: $primary-color;
+  }
+}
+
+form {
+  width: clamp(20rem, 100%, 42rem);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 0.4rem silver;
+  padding: 1.2rem;
+  .button-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  input {
+    flex: 1;
+    margin-bottom: 0.8rem;
+    outline: none;
+    border: 1px solid silver;
+    font-size: 1.6rem;
+    padding: 0.4rem;
+    &:focus {
+      border: 1px solid darken(silver, 20);
+    }
+  }
+  button {
+    margin-right: 0.4rem;
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+.weather-list {
+  margin: auto;
+  width: clamp(20rem, 100%, 48rem);
+  text-align: center;
+}
