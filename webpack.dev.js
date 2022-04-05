@@ -8,6 +8,7 @@ module.exports = {
     explore: "./src/client/js/explore.js",
     search: "./src/client/js/search.js",
     location: "./src/client/js/location.js",
+    confirm: "./src/client/js/confirm.js",
   },
   mode: "development",
   devtool: "inline-source-map",
@@ -37,6 +38,11 @@ module.exports = {
       template: "./src/client/views/location.html",
       filename: "./location.html",
       chunks: ["location"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/client/views/confirm.html",
+      filename: "./confirm.html",
+      chunks: ["confirm"],
     }),
     new CleanWebpackPlugin({
       dry: true,
