@@ -20,8 +20,16 @@ app.get("/", (_req, res) => {
   res.sendFile(path.resolve("dist/index.html"));
 });
 
-app.get("/data", (_req, res) => {
-  fetchDB("temp", (data) => res.json(data));
+app.get("/trips", (_req, res) => {
+  fetchDB("trips", (data) => {
+    res.json(data);
+  });
+});
+
+app.get("/saved", (_req, res) => {
+  fetchDB("saved", (data) => {
+    res.json(data);
+  });
 });
 
 app.post("/update", (req, res) => {
@@ -32,6 +40,7 @@ app.post("/update", (req, res) => {
 
 app.get("*", (req, res) => {
   const currentPath = req.path.replace("/", "");
+  console.log({ currentPath });
   res.sendFile(path.resolve(`dist/${currentPath}.html`));
 });
 

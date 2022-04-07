@@ -9,7 +9,10 @@ const fs = require("fs");
 const fetchDB = (path, callback) => {
   fs.readFile(`${__dirname}/db/${path}.json`, "utf-8", (err, data) => {
     if (err) throw err;
-    else callback(data);
+    else {
+      const parsedData = JSON.parse(data);
+      callback(parsedData);
+    }
   });
 };
 
