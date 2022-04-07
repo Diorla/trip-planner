@@ -1,7 +1,7 @@
 import createElement from "../modules/createElement";
 import coordsToDMS from "../modules/coordsToDMS";
 
-function createSavedTrip({ name, description, long, lat, region, id }) {
+function createSearchTrip({ name, description, long, lat, region, id }) {
   return `<div class="search-card">
     <div class="card-top">
       <div class="location">
@@ -20,11 +20,14 @@ function createSavedTrip({ name, description, long, lat, region, id }) {
   </div>`;
 }
 
-export default function createSavedTrips(saved) {
-  const savedTrip = `<h2>Saved trip</h2><div class="trip-wrapper">${saved
-    .map((item) => createSavedTrip(item))
+export default function createSearchTrips(search) {
+  const searchTerm = location.search.replace("?q=", "");
+  const searchTrip = `<h1>${searchTerm}</h1>
+  <div class="subtitle">Top 10 results</div>
+  <div class="trip-wrapper">${search
+    .map((item) => createSearchTrip(item))
     .join("")}</div>`;
-  createElement("saved-trip", savedTrip, () => {
-    localStorage.setItem("saved", JSON.stringify(saved));
+  createElement("search-trip", searchTrip, () => {
+    localStorage.setItem("search", JSON.stringify(search));
   });
 }

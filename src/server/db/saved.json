@@ -2,15 +2,17 @@
   {
     "name": "London",
     "description": "Capital of a political entity",
-    "long": "N 51&deg; 31' 33''",
-    "lat": "W 0&deg; 7' 32''",
-    "region": "England, United Kingdom"
+    "long": "48.420167",
+    "lat": "48.420167",
+    "region": "England, United Kingdom",
+    "id": "2643743"
   },
   {
     "name": "London",
     "description": "Capital of a political entity",
-    "long": "N 51&deg; 31' 33''",
-    "lat": "W 0&deg; 7' 32''",
-    "region": "England, United Kingdom"
+    "long": "48.420167",
+    "lat": "48.420167",
+    "region": "England, United Kingdom",
+    "id": "2643743"
   }
 ]

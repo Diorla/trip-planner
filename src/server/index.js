@@ -9,6 +9,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const updateDB = require("./updateDB");
 const fetchDB = require("./fetchDB");
+const fetch = require("isomorphic-fetch");
 
 app.use(express.json());
 
@@ -26,10 +27,31 @@ app.get("/trips", (_req, res) => {
   });
 });
 
-app.get("/saved", (_req, res) => {
-  fetchDB("saved", (data) => {
-    res.json(data);
-  });
+// app.get("/saved", (_req, res) => {
+//   fetchDB("saved", (data) => {
+//     res.json(data);
+//   });
+// });
+
+app.get("/city-search", async (req, res) => {
+  const { q } = req.query;
+  console.log({ q });
+  const response = await fetch(
+    `http://api.geonames.org/searchJSON?q=${q}&username=${process.env.geonameUser}&maxRows=10`
+  );
+  const data = await response.json();
+
+  res.json(data);
+});
+
+app.get("/get-location", async (req, res) => {
+  const { id } = req.query;
+  const response = await fetch(
+    `http://api.geonames.org/get?geonameId=${id}&username=${process.env.geonameUser}`
+  );
+  const data = await response.json();
+
+  res.json(data);
 });
 
 app.post("/update", (req, res) => {
@@ -40,7 +62,6 @@ app.post("/update", (req, res) => {
 
 app.get("*", (req, res) => {
   const currentPath = req.path.replace("/", "");
-  console.log({ currentPath });
   res.sendFile(path.resolve(`dist/${currentPath}.html`));
 });
 

@@ -17,17 +17,5 @@
 export default function createElement(targetId, element, callback) {
   const targetElement = document.getElementById(targetId);
   targetElement.innerHTML = element;
-  callback();
+  callback && callback();
 }
-
-// const createTag = (...tags) => {
-//   return tags.map((item) => `<span class="tag">${item}</span>`).join(" ");
-// };
-
-// createElement("app", createTag("hello", "world"), () => {
-//   document.querySelectorAll(".tag").forEach((item) =>
-//     item.addEventListener("click", () => {
-//       console.log("hello");
-//     })
-//   );
-// });
