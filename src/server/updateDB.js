@@ -11,7 +11,7 @@ const updateDB = (path, newData, callback) => {
   fs.readFile(`${__dirname}/db/${path}.json`, "utf-8", (err, data) => {
     if (err) throw err;
     else {
-      const currentData = JSON.stringify({ ...JSON.parse(data), ...newData });
+      const currentData = JSON.stringify([...JSON.parse(data), newData]);
       fs.writeFile(
         `${__dirname}/db/${path}.json`,
         currentData,

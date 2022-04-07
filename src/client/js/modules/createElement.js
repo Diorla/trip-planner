@@ -14,7 +14,7 @@
     );
   });
  */
-export default function createElement(targetId, element, callback) {
+export default function createElement(targetId, element, callback = null) {
   const targetElement = document.getElementById(targetId);
   targetElement.innerHTML = element;
   callback && callback();

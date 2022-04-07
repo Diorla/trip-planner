@@ -27,11 +27,17 @@ app.get("/trips", (_req, res) => {
   });
 });
 
-// app.get("/saved", (_req, res) => {
-//   fetchDB("saved", (data) => {
-//     res.json(data);
-//   });
-// });
+app.post("/save-location", (req, res) => {
+  const { body } = req;
+  updateDB("saved", body, () => res.status(200).end(`${body.name} saved`));
+});
+
+app.post("/save-trip", (req, res) => {
+  const { body } = req;
+  updateDB("trips", body, () =>
+    res.status(200).end(`Trip to ${body.name} added`)
+  );
+});
 
 app.get("/city-search", async (req, res) => {
   const { q } = req.query;
@@ -47,7 +53,7 @@ app.get("/city-search", async (req, res) => {
 app.get("/get-location", async (req, res) => {
   const { id } = req.query;
   const response = await fetch(
-    `http://api.geonames.org/get?geonameId=${id}&username=${process.env.geonameUser}`
+    `http://api.geonames.org/getJSON?geonameId=${id}&username=${process.env.geonameUser}`
   );
   const data = await response.json();
 

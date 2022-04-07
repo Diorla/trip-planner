@@ -2,7 +2,6 @@
  * It will send data using post method
  * @param {string} url api endpoint
  * @param {object} data the data that will be sent to the API endpoint
- * @param {object} data.url the website to be analysed
  * @returns Promise<any>
  * @example postData("/update", {
     name: "Katherine Janeway",
@@ -20,7 +19,7 @@ export default async function postData(url = "", data = {}) {
       },
       body: JSON.stringify(data),
     });
-    const response = result.json();
+    const response = result.text();
     return response;
   } catch (err) {
     console.error(err);
