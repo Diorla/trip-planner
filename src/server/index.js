@@ -39,9 +39,15 @@ app.post("/save-trip", (req, res) => {
   );
 });
 
+app.get("/last-trip", (_req, res) => {
+  fetchDB("trips", (data) => {
+    const lastIdx = data.length - 1;
+    res.json(data[lastIdx]);
+  });
+});
+
 app.get("/city-search", async (req, res) => {
   const { q } = req.query;
-  console.log({ q });
   const response = await fetch(
     `http://api.geonames.org/searchJSON?q=${q}&username=${process.env.geonameUser}&maxRows=10`
   );
