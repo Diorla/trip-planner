@@ -1,7 +1,6 @@
 import "../styles/confirm.scss";
 import createElement from "./modules/createElement";
 import fetchData from "./modules/fetchData";
-console.log("confirm");
 
 fetchData("/last-trip")
   .then((data) => {

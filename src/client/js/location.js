@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
     ).textContent = `${adminName1}, ${countryName}`;
     createElement(
       "info",
-      `<a href=${wikipediaURL} target="_blank" rel="noopener">info</a>`
+      `<a href=https://${wikipediaURL} target="_blank" rel="noopener">info</a>`
     );
     document.querySelector(".bookmark").addEventListener("click", () => {
       postData("/save-location", {
@@ -65,8 +65,19 @@ window.addEventListener("DOMContentLoaded", () => {
           long: lng,
         }).then(() => location.assign(`/confirm`));
       } else {
-        // send error update
+        console.log("error saving data");
       }
+    });
+    fetchData(`/weather?long=${lng}&&lat=${lat}`).then((weatherData) => {
+      const tbody = document.querySelector("tbody");
+      const generateRow = (data) => `<tr>
+            <td>${data.datetime}</td>
+            <td><i class="fa-solid fa-droplet"></i>${data.rh}%</td>
+            <td>${data.max_temp}/${data.min_temp}</td>
+            <td>${data.pres}</td>
+            <td>${data.wind_spd}</td>
+          </tr>`;
+      tbody.innerHTML = weatherData.data.map(generateRow).join("");
     });
   });
 });

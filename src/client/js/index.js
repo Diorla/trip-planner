@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(err);
     });
 
-  fetchData("/saved")
+  fetchData("/saved-trips")
     .then((trips) => {
       trips.forEach((elem) => {
         saved.push(elem);

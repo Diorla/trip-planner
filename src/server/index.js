@@ -10,6 +10,7 @@ dotenv.config();
 const updateDB = require("./updateDB");
 const fetchDB = require("./fetchDB");
 const fetch = require("isomorphic-fetch");
+const dateRangeGenerator = require("./dateRangeGenerator");
 
 app.use(express.json());
 
@@ -23,6 +24,12 @@ app.get("/", (_req, res) => {
 
 app.get("/trips", (_req, res) => {
   fetchDB("trips", (data) => {
+    res.json(data);
+  });
+});
+
+app.get("/saved-trips", (_req, res) => {
+  fetchDB("saved", (data) => {
     res.json(data);
   });
 });
@@ -56,6 +63,17 @@ app.get("/city-search", async (req, res) => {
   res.json(data);
 });
 
+app.get("/weather", async (req, res) => {
+  const { long, lat } = req.query;
+  const { start, end } = dateRangeGenerator();
+  const API_KEY = process.env.weatherAPI;
+  const response = await fetch(
+    `https://api.weatherbit.io/v2.0/history/daily?lat=${long}&lon=${lat}&key=${API_KEY}&start_date=${start}&end_date=${end}`
+  );
+  const data = await response.json();
+
+  res.json(data);
+});
 app.get("/get-location", async (req, res) => {
   const { id } = req.query;
   const response = await fetch(
