@@ -1,5 +1,3 @@
-// new Date(Date.now() - (1000*60*60*24*10))
-
 function formatDate(date) {
   const dt = new Date(date).getDate();
   const month = new Date(date).getMonth();
@@ -9,7 +7,7 @@ function formatDate(date) {
 
 function dateRangeGenerator() {
   return {
-    start: formatDate(new Date(Date.now() - 1000 * 60 * 60 * 24 * 6)),
+    start: formatDate(new Date(Date.now() - 8.64e7 * 6)),
     end: formatDate(Date.now()),
   };
 }
