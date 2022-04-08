@@ -63,6 +63,16 @@ app.get("/city-search", async (req, res) => {
   res.json(data);
 });
 
+app.get("/image", async (req, res) => {
+  const { q } = req.query;
+  const response = await fetch(
+    `https://pixabay.com/api/?key=${process.env.PIXABAY}&q=${q}|not-found&image_type=photo`
+  );
+  const data = await response.json();
+
+  res.json(data);
+});
+
 app.get("/weather", async (req, res) => {
   const { long, lat } = req.query;
   const { start, end } = dateRangeGenerator();

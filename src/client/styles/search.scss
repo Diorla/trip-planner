@@ -3,3 +3,28 @@
 @import "./nav-m.scss";
 @import "./search-card-m.scss";
 @import "./trip-wrapper-m.scss";
+
+figure {
+  width: clamp(10rem, 30%, 36rem);
+  box-shadow: 0 0 0.4rem silver;
+  img {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
+}
+figcaption {
+  text-align: center;
+  padding: 0.4rem;
+}
+
+.center {
+  text-align: center;
+  margin: 0.4rem;
+  font-size: 2.6rem;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
