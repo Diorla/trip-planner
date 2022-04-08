@@ -94,12 +94,6 @@ app.get("/get-location", async (req, res) => {
   res.json(data);
 });
 
-app.post("/update", (req, res) => {
-  updateDB("temp", req.body, () => {
-    res.status(200).send("Request successful");
-  });
-});
-
 app.get("*", (req, res) => {
   const currentPath = req.path.replace("/", "");
   res.sendFile(path.resolve(`dist/${currentPath}.html`));

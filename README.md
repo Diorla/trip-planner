@@ -4,7 +4,6 @@
 - [Badges](#badges)
 - [Pages](#pages)
   - [Welcome page](#welcome-page)
-  - [Drawer](#drawer)
   - [Home page](#home-page)
   - [Explore pages](#explore-pages)
     - [Search results](#search-results)
@@ -29,6 +28,16 @@
     - [SCSS](#scss)
     - [Javascript](#javascript)
   - [Backend](#backend)
+- [API](#api)
+  - [```/trips```](#trips)
+  - [```/saved-trips```](#saved-trips)
+  - [```/last-trip```](#last-trip)
+  - [```/city-search?q=search```](#city-searchqsearch)
+  - [```/image?q=search```](#imageqsearch)
+  - [```/weather?long&lat```](#weatherlonglat)
+  - [```/get-location?q=search```](#get-locationqsearch)
+  - [```/save-location```](#save-location)
+  - [```/save-trip```](#save-trip)
 - [Design](#design)
 - [Credits](#credits)
 - [License](#license)
@@ -55,18 +64,6 @@
 - It will enable them to sign in
 - It will be also some sort ads or welcome to the webpage
 
-## Drawer
-
-- This is the primary navigation for the webpage
-- It will be accessible via the menu or hamburger sign
-- It will lead to the following pages
-  - Home page
-  - Explore
-  - History
-  - Saved city
-  - Planned trips
-  - Logout button
-
 ## Home page
 
 - Basic profile of the user
@@ -77,7 +74,7 @@
     - Trips
     - Saved
   - Background picture
-- A call to action button with "New trip", will lead to explore page
+- A call to action button with "Explore", will lead to explore page
 - Current trip
   - This will be based on the date.
   - Any date that overlaps with today will be the one
@@ -216,6 +213,285 @@ The backend is written in `nodejs` and powered by `express.js`. it is found insi
 - Serves other static files
 - Accepts `url` from the client side
 - Handles connection to API
+- Quasi database was created using `JSON` and `fs`
+
+# API
+The list of API available for use
+
+## ```/trips```
+method: get
+returns all trips, present, past and planned.
+
+```json
+[
+  {
+    "start": "2022-04-04",
+    "end": "2022-05-04",
+    "city": "Abuja",
+    "tag": "Safari",
+    "id": "1",
+    "long": "9.320677",
+    "lat": "26.79143"
+  }
+]
+```
+
+## ```/saved-trips```
+method: get
+Returns the list of bookmarked trips
+
+```json
+[
+  {
+    "name": "London",
+    "lat": "51.50853",
+    "description": "capital of a political entity",
+    "long": "-0.12574",
+    "region": "England, United Kingdom",
+    "id": 2643743
+  }
+]
+```
+
+## ```/last-trip```
+method: get
+Returns the last trip that was added
+
+```json
+{
+  "name": "London",
+  "lat": "51.50853",
+  "description": "capital of a political entity",
+  "long": "-0.12574",
+  "region": "England, United Kingdom",
+  "id": 2643743
+}
+```
+
+## ```/city-search?q=search```
+method: get
+Returns list of trips that matches the search
+
+```json
+{
+  "totalResultsCount": 107538,
+  "geonames": [
+    {
+      "adminCode1": "00",
+      "lng": "29.35708",
+      "geonameId": 980611,
+      "toponymName": "Mafadi",
+      "countryId": "953987",
+      "fcl": "T",
+      "population": 0,
+      "countryCode": "ZA",
+      "name": "Mafadi",
+      "fclName": "mountain,hill,rock,... ",
+      "countryName": "South Africa",
+      "fcodeName": "mountain",
+      "adminName1": "",
+      "lat": "-29.20233",
+      "fcode": "MT"
+    }
+  ]
+}
+```
+
+## ```/image?q=search```
+method: get
+Returns list of images that matches the location or not-found
+
+```json
+{
+"total": 4692,
+"totalHits": 500,
+"hits": [
+    {
+      "id": 195893,
+      "pageURL": "https://pixabay.com/en/blossom-bloom-flower-195893/",
+      "type": "photo",
+      "tags": "blossom, bloom, flower",
+      "previewURL": "https://cdn.pixabay.com/photo/2013/10/15/09/12/flower-195893_150.jpg"
+      "previewWidth": 150,
+      "previewHeight": 84,
+      "webformatURL": "https://pixabay.com/get/35bbf209e13e39d2_640.jpg",
+      "webformatWidth": 640,
+      "webformatHeight": 360,
+      "largeImageURL": "https://pixabay.com/get/ed6a99fd0a76647_1280.jpg",
+      "fullHDURL": "https://pixabay.com/get/ed6a9369fd0a76647_1920.jpg",
+      "imageURL": "https://pixabay.com/get/ed6a9364a9fd0a76647.jpg",
+      "imageWidth": 4000,
+      "imageHeight": 2250,
+      "imageSize": 4731420,
+      "views": 7671,
+      "downloads": 6439,
+      "likes": 5,
+      "comments": 2,
+      "user_id": 48777,
+      "user": "Josch13",
+      "userImageURL": "https://cdn.pixabay.com/user/2013/11/05/02-10-23-764_250x250.jpg",
+    },
+    ...
+  ]
+}
+```
+
+## ```/weather?long&lat```
+method: get
+Returns 7 day weather report of the specified longitude and latitude
+
+```json
+{
+  "timezone": "Atlantic/Azores",
+  "state_code": "23",
+  "country_code": "PT",
+  "lat": 31.0292,
+  "lon": -29.8579,
+  "city_name": "Ribeira Grande",
+  "station_id": "085150-99999",
+  "data": [
+    {
+      "rh": 88.2,
+      "max_wind_spd_ts": 1646229600,
+      "t_ghi": 5320.3,
+      "max_wind_spd": 9.3,
+      "solar_rad": 80.6,
+      "wind_gust_spd": 9.3,
+      "max_temp_ts": 1646218800,
+      "min_temp_ts": 1646265600,
+      "clouds": 77,
+      "max_dni": 902.4,
+      "precip_gpm": 0,
+      "wind_spd": 6.3,
+      "slp": 1028.9,
+      "ts": 1646182800,
+      "max_ghi": 772.2,
+      "temp": 16.2,
+      "pres": 1016.8,
+      "dni": 339.7,
+      "dewpt": 14.2,
+      "snow": 0,
+      "dhi": 41.8,
+      "precip": 0,
+      "wind_dir": 233,
+      "max_dhi": 115.3,
+      "ghi": 221.7,
+      "max_temp": 17,
+      "t_dni": 8152.3,
+      "max_uv": 2.5,
+      "t_dhi": 1003.9,
+      "datetime": "2022-03-02",
+      "t_solar_rad": 1933.7,
+      "min_temp": 13,
+      "max_wind_dir": 233,
+      "snow_depth": null
+    },
+    ...
+  ],
+  "sources": [
+    "imerg",
+    "merra2",
+    "era5",
+    "modis"
+  ],
+  "city_id": "3372707"
+}
+```
+
+## ```/get-location?q=search```
+method: get
+Returns information about a single location
+
+```json
+{
+  "timezone": {
+      "gmtOffset": 2,
+      "timeZoneId": "Africa/Johannesburg",
+      "dstOffset": 2
+  },
+  "bbox": {
+      "east": 31.29298220746991,
+      "south": -30.08718995240963,
+      "north": -29.62860204759037,
+      "west": 30.76541379253009,
+      "accuracyLevel": 0
+  },
+  "asciiName": "Durban",
+  "astergdem": 35,
+  "countryId": "953987",
+  "fcl": "P",
+  "srtm3": 21,
+  "adminId2": "8299474",
+  "adminId3": "8347491",
+  "countryCode": "ZA",
+  "adminCodes1": {
+      "ISO3166_2": "KZN"
+  },
+  "adminId1": "972062",
+  "lat": "-29.8579",
+  "fcode": "PPLA2",
+  "continentCode": "AF",
+  "adminCode2": "ETH",
+  "adminCode3": "ETH",
+  "adminCode1": "02",
+  "lng": "31.0292",
+  "geonameId": 1007311,
+  "toponymName": "Durban",
+  "population": 3120282,
+  "wikipediaURL": "en.wikipedia.org/wiki/Durban",
+  "adminName5": "",
+  "adminName4": "",
+  "adminName3": "Ethekwini",
+  "alternateNames": [
+    {
+      "name": "더반",
+      "lang": "ko"
+    },
+    {
+      "name": "ደርባን",
+      "lang": "am"
+    },
+  ],
+  "adminName2": "eThekwini Metropolitan Municipality",
+  "name": "Durban",
+  "fclName": "city, village,...",
+  "countryName": "South Africa",
+  "fcodeName": "seat of a second-order administrative division",
+  "adminName1": "KwaZulu-Natal"
+}
+```
+
+## ```/save-location```
+method: post
+To add a new location that may be retrieved later. The body should be like below
+
+```json
+{
+  "name": "London",
+  "lat": "51.50853",
+  "description": "capital of a political entity",
+  "long": "-0.12574",
+  "region": "England, United Kingdom",
+  "id": 2643743
+}
+```
+
+
+## ```/save-trip```
+method: post
+To add a new trip
+
+```json
+{
+  "city": "London",
+  "lat": "51.50853",
+  "description": "capital of a political entity",
+  "long": "-0.12574",
+  "region": "England, United Kingdom",
+  "id": 2643743
+}
+```
+
 
 # Design
 
