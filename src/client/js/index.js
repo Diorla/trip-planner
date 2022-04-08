@@ -1,4 +1,3 @@
-// @ts-check
 import "../styles/index.scss";
 import fetchData from "./modules/fetchData";
 import dateRange from "./modules/dateRange";

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel app</title>
+    <title>Travel app - History</title>
     <script
       src="https://kit.fontawesome.com/eab8467d07.js"
       crossorigin="anonymous"
@@ -18,7 +18,7 @@
   <body>
     <nav>
       <ul>
-        <li class="active">
+        <li>
           <a href="/"><span>Home</span><i class="fa-solid fa-house"></i></a>
         </li>
         <li>
@@ -31,7 +31,7 @@
             <span>Saved</span> <i class="fa-solid fa-bookmark"> </i>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="/history">
             <span>History</span> <i class="fa-solid fa-clock-rotate-left"> </i>
           </a>
@@ -39,35 +39,8 @@
       </ul>
     </nav>
     <main>
-      <h1>History</h1>
-      <div class="trip-wrapper">
-        <div class="trip-card">
-          <div class="card-main">
-            <div class="card-top">
-              <span class="label">Safari</span>
-            </div>
-            <div class="card-bottom">Lagos</div>
-          </div>
-          <div class="card-info">
-            <time datetime="2022-04-01T19:53:02.055Z">Fri Apr 01 2022</time>
-            <span>to</span>
-            <time datetime="2022-04-03T19:53:02.055Z">Fri Apr 03 2022</time>
-          </div>
-        </div>
-        <div class="trip-card">
-          <div class="card-main">
-            <div class="card-top">
-              <span class="label">Safari</span>
-            </div>
-            <div class="card-bottom">Lagos</div>
-          </div>
-          <div class="card-info">
-            <time datetime="2022-04-01T19:53:02.055Z">Fri Apr 01 2022</time>
-            <span>to</span>
-            <time datetime="2022-04-03T19:53:02.055Z">Fri Apr 03 2022</time>
-          </div>
-        </div>
-      </div>
+      <h1>Previous trip</h1>
+      <div id="previous-trip"></div>
     </main>
   </body>
 </html>
