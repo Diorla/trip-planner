@@ -65,7 +65,6 @@
     </main>
     <script>
       if ("serviceWorker" in navigator) {
-        console.log("service worker initiated");
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("/service-worker.js");
         });
