@@ -2,6 +2,7 @@
 # Contents
 - [Contents](#contents)
 - [Badges](#badges)
+- [Environment variables](#environment-variables)
 - [Pages](#pages)
   - [Welcome page](#welcome-page)
   - [Home page](#home-page)
@@ -55,6 +56,13 @@
 ![Package version](https://img.shields.io/github/package-json/v/diorla/trip-planner)
 ![Last commit](https://img.shields.io/github/last-commit/diorla/trip-planner)
 ![Commit activity](https://img.shields.io/github/commit-activity/w/diorla/trip-planner)
+
+# Environment variables
+```sh
+geonameUser="diorla"
+weatherAPI="ee1d1e9cd49348eb8034ceb32f8779fd"
+PIXABAY="8589248-e5a9c8ca78fc229c4a42ae023"
+```
 
 # Pages
 
@@ -146,8 +154,17 @@
 # Commands
 
 ## ```Install```
+
+Clone the repo
 ```sh
 git clone https://github.com/Diorla/trip-planner
+```
+Create `.env` file
+Add the following to the `.env` file
+```sh
+geonameUser="diorla"
+weatherAPI="ee1d1e9cd49348eb8034ceb32f8779fd"
+PIXABAY="8589248-e5a9c8ca78fc229c4a42ae023"
 ```
 
 ## ```Editing```

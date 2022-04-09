@@ -12,6 +12,9 @@ const fetchDB = require("./fetchDB");
 const fetch = require("isomorphic-fetch");
 const dateRangeGenerator = require("./dateRangeGenerator");
 
+/**
+ * Please check README.md for environmental variables
+ */
 app.use(express.json());
 
 app.use(cors());
