@@ -21,27 +21,42 @@ app.use(cors());
 
 app.use(express.static("dist"));
 
+/**
+ * Returns homepage
+ */
 app.get("/", (_req, res) => {
   res.sendFile(path.resolve("dist/index.html"));
 });
 
+/**
+ * returns list of trips
+ */
 app.get("/trips", (_req, res) => {
   fetchDB("trips", (data) => {
     res.json(data);
   });
 });
 
+/**
+ * returns list of bookmarked trips
+ */
 app.get("/saved-trips", (_req, res) => {
   fetchDB("saved", (data) => {
     res.json(data);
   });
 });
 
+/**
+ * adds location to the list of saved trip
+ */
 app.post("/save-location", (req, res) => {
   const { body } = req;
   updateDB("saved", body, () => res.status(200).end(`${body.name} saved`));
 });
 
+/**
+ * add new trip
+ */
 app.post("/save-trip", (req, res) => {
   const { body } = req;
   updateDB("trips", body, () =>
@@ -49,6 +64,9 @@ app.post("/save-trip", (req, res) => {
   );
 });
 
+/**
+ * Fetch last added trip
+ */
 app.get("/last-trip", (_req, res) => {
   fetchDB("trips", (data) => {
     const lastIdx = data.length - 1;
@@ -56,6 +74,9 @@ app.get("/last-trip", (_req, res) => {
   });
 });
 
+/**
+ * Returns list of cities that matches the search term
+ */
 app.get("/city-search", async (req, res) => {
   const { q } = req.query;
   const response = await fetch(
@@ -66,6 +87,9 @@ app.get("/city-search", async (req, res) => {
   res.json(data);
 });
 
+/**
+ * Returns images that matches the search term
+ */
 app.get("/image", async (req, res) => {
   const { q } = req.query;
   const response = await fetch(
@@ -76,6 +100,9 @@ app.get("/image", async (req, res) => {
   res.json(data);
 });
 
+/**
+ * Returns the weather report for a particular location based on long and lat
+ */
 app.get("/weather", async (req, res) => {
   const { long, lat } = req.query;
   const { start, end } = dateRangeGenerator();
@@ -87,6 +114,10 @@ app.get("/weather", async (req, res) => {
 
   res.json(data);
 });
+
+/**
+ * Used to fetch information about a particular location
+ */
 app.get("/get-location", async (req, res) => {
   const { id } = req.query;
   const response = await fetch(
@@ -97,11 +128,17 @@ app.get("/get-location", async (req, res) => {
   res.json(data);
 });
 
+/**
+ * Dynamic response to fetching pages e.g. `/explore` will get `dist/explore.html`
+ */
 app.get("*", (req, res) => {
   const currentPath = req.path.replace("/", "");
   res.sendFile(path.resolve(`dist/${currentPath}.html`));
 });
 
+/**
+ * Get server up and running
+ */
 app.listen(port, () => {
   console.log(
     `Server listening at ${("http://localhost:" + port).blue.underline}`

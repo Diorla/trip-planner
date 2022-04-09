@@ -1,3 +1,5 @@
+import toast from "./toast";
+
 /**
  * Used to fetch data
  * @param {string} url the API endpoint
@@ -12,7 +14,7 @@ export default async function fetchData(url = "") {
     const response = result.json();
     return response;
   } catch (err) {
-    console.error(err);
+    toast(err.message);
     return null;
   }
 }

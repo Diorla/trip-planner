@@ -1,5 +1,6 @@
 import "../styles/search.scss";
 import fetchData from "./modules/fetchData";
+import toast from "./modules/toast";
 import createNotFound from "./utils/createNotFound";
 import createSearchTrips from "./utils/createSearchTrips";
 
@@ -36,5 +37,5 @@ window.addEventListener("DOMContentLoaded", () => {
         });
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => toast(err.message));
 });

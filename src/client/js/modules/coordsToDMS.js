@@ -1,5 +1,11 @@
 import getDecimal from "./getDecimal";
 
+/**
+ * Converts coords in decimals to degrees, minutes and seconds
+ * @param {number} val the coordinate in longitude and latitude
+ * @param {boolean} long is it longitude or latitude - default: true
+ * @returns string
+ */
 export default function coordsToDMS(val, long = true) {
   const base = Math.abs(val);
   const deg = Math.floor(base);

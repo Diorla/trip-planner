@@ -2,11 +2,14 @@ import "../styles/location.scss";
 import fetchData from "./modules/fetchData";
 import createElement from "./modules/createElement";
 import postData from "./modules/postData";
+import toast from "./modules/toast";
 
+// Ensures that final date is after the starting date
 function validateForm(start, end) {
   return new Date(end) > new Date(start);
 }
 
+// Prevents submission of form
 document.querySelectorAll("button").forEach((item) =>
   item.addEventListener("click", (e) => {
     e.preventDefault();
@@ -18,6 +21,7 @@ document.querySelector("button.error").addEventListener("click", () => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
+  // Fetch info about a particular location and update webpage
   fetchData(`/get-location${location.search}`).then((data) => {
     const {
       name,
@@ -37,6 +41,8 @@ window.addEventListener("DOMContentLoaded", () => {
       "info",
       `<a href=https://${wikipediaURL} target="_blank" rel="noopener">info</a>`
     );
+
+    // Save the location for later on the server
     document.querySelector(".bookmark").addEventListener("click", () => {
       postData("/save-location", {
         name,
@@ -46,14 +52,17 @@ window.addEventListener("DOMContentLoaded", () => {
         region: `${adminName1}, ${countryName}`,
         id: geonameId,
       })
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+        .then(() => toast(`${name} bookmarked`, true))
+        .catch((err) => toast(err.message));
     });
 
+    // Submit the form
     document.querySelector("button.primary").addEventListener("click", () => {
       const start = document.querySelector("#from").value;
       const end = document.querySelector("#to").value;
       const tag = document.querySelector("#tag").value;
+
+      // first, validate the form before submitting the form
       if (validateForm(start, end)) {
         postData("/save-trip", {
           start,
@@ -65,9 +74,11 @@ window.addEventListener("DOMContentLoaded", () => {
           long: lng,
         }).then(() => location.assign(`/confirm`));
       } else {
-        console.log("error saving data");
+        toast("error saving data");
       }
     });
+
+    // Fetch weather information about the specific location
     fetchData(`/weather?long=${lng}&&lat=${lat}`).then((weatherData) => {
       const tbody = document.querySelector("tbody");
       const generateRow = (data) => `<tr>

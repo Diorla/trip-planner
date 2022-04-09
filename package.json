@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "build:prod": "webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js",
     "build:dev": "webpack --config webpack.dev.js --watch",
     "start:server": "nodemon src/server/index.js",
     "start": "concurrently \"npm run build:dev\" \"npm run start:server\""
@@ -18,7 +18,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "isomorphic-fetch": "^3.0.0"
+    "isomorphic-fetch": "^3.0.0",
+    "toastify-js": "^1.11.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.7",

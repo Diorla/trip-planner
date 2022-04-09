@@ -20,7 +20,7 @@
     - [```npm start```](#npm-start)
     - [```npm run start:client```](#npm-run-startclient)
     - [```npm run build:dev```](#npm-run-builddev)
-    - [```npm run build:prod```](#npm-run-buildprod)
+    - [```npm run build```](#npm-run-build)
     - [```npm run test```](#npm-run-test)
     - [```npm run test:watch```](#npm-run-testwatch)
 - [Technologies](#technologies)
@@ -131,8 +131,6 @@ PIXABAY="8589248-e5a9c8ca78fc229c4a42ae023"
 - There will be some other suggestions to add more cities like that
 - A button that leads home
 
-
-
 ## Planned
 
 - It will show the list of trips that they are planning
@@ -185,11 +183,11 @@ Supports HMR
 
 ### ```npm run build:dev```
 
-build client side with dev mode
+build client side with dev mode. `Service worker` is not available in development mode.
 
-### ```npm run build:prod```
+### ```npm run build```
 
-build client side with production mode
+build client side with production mode. `Service worker` is available in the production mode.
 
 ### ```npm run test```
 

@@ -1,5 +1,6 @@
 import "../styles/saved.scss";
 import fetchData from "./modules/fetchData";
+import toast from "./modules/toast";
 import createSavedTrips from "./utils/createSavedTrips";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -13,6 +14,6 @@ window.addEventListener("DOMContentLoaded", () => {
       createSavedTrips(saved);
     })
     .catch((err) => {
-      console.log(err);
+      toast(err.message);
     });
 });

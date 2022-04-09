@@ -1,3 +1,5 @@
+import toast from "./toast";
+
 /**
  * It will send data using post method
  * @param {string} url api endpoint
@@ -22,7 +24,7 @@ export default async function postData(url = "", data = {}) {
     const response = result.text();
     return response;
   } catch (err) {
-    console.error(err);
+    toast(err.message);
     return null;
   }
 }

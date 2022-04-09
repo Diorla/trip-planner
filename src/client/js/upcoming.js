@@ -2,6 +2,7 @@ import "../styles/upcoming.scss";
 import fetchData from "./modules/fetchData";
 import dateRange from "./modules/dateRange";
 import createUpcomingTrips from "./utils/createUpcomingTrips";
+import toast from "./modules/toast";
 
 window.addEventListener("DOMContentLoaded", () => {
   createUpcomingTrips(JSON.parse(localStorage.getItem("upcoming")) || []);
@@ -15,6 +16,6 @@ window.addEventListener("DOMContentLoaded", () => {
       createUpcomingTrips(upcoming);
     })
     .catch((err) => {
-      console.log(err);
+      toast(err.message);
     });
 });

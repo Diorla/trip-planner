@@ -71,6 +71,7 @@ module.exports = {
       protectWebpackAssets: false,
     }),
     new MiniCssExtractPlugin(),
+    // service worker here
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,
       skipWaiting: true,

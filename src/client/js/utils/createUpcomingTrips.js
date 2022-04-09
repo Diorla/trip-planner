@@ -1,7 +1,15 @@
 import createElement from "../modules/createElement";
 
-function createUpcomingTrip({ tag, city, start }) {
-  return `<div class="trip-card">
+/**
+ * It will be used to create a single trip card using innerHTML
+ * @param {object} trip the trip object
+ * @param {string} trip.tag the label
+ * @param {string} trip.city the location
+ * @param {string} trip.start the start date
+ * @returns a node string
+ */
+const createUpcomingTrip = ({ tag, city, start }) =>
+  `<div class="trip-card">
     <div class="card-main">
       <div class="card-top">
         <span class="label">${tag}</span>
@@ -15,7 +23,6 @@ function createUpcomingTrip({ tag, city, start }) {
       </span>
     </div>
   </div>`;
-}
 
 export default function createUpcomingTrips(upcoming) {
   const upcomingTrip = `<h2>Upcoming trip</h2><div class="trip-wrapper">${upcoming
